@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {ChatApplicationModel} from "./chat/ChatApplicationModel";
 import {ChatApplication} from "./chat/ChatApplication";
