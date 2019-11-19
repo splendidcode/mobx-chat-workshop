@@ -17,11 +17,12 @@ export const ChatWindowModel = types
     updateCurrentTime() {
       self.currentTime = new Date();
     },
-    afterCreate() {
-      chatClient.subscribe('/messages', messageJson => {
-        console.log('RECEIVING MESSAGE', messageJson);
-        self.receiveMessage(messageJson);
-      });
-      setInterval(self.updateCurrentTime, 1000);
-    }
+     afterCreate() {
+       setInterval(self.updateCurrentTime, 1000);
+         
+       chatClient.subscribe('/messages', messageJson => {
+         console.log('RECEIVING MESSAGE', messageJson);
+         self.receiveMessage(messageJson);
+       });
+     }
   }));

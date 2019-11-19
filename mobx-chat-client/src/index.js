@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { ChatApplicationModel } from './chat/ChatApplicationModel';
 import { ChatApplication } from './chat/ChatApplication';
-import { onSnapshot } from 'mobx-state-tree';
+import { onSnapshot, getSnapshot } from 'mobx-state-tree';
 import { autorun } from 'mobx';
 
 const app = ChatApplicationModel.create();
-window.app = app;
 
 ReactDOM.render(<ChatApplication app={app} />, document.getElementById('root'));
 
@@ -16,6 +15,8 @@ ReactDOM.render(<ChatApplication app={app} />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
+window.app = app;
 window.ChatApplicationModel = ChatApplicationModel;
 window.onSnapshot = onSnapshot;
+window.getSnapshot = getSnapshot;
 window.autorun = autorun;

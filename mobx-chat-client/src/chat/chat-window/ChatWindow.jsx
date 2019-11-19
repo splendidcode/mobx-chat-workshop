@@ -16,13 +16,14 @@ export const TimeDisplay = ({chatWindow}) => {
 };
 
 export const ChatWindow = ({app}) =>{
-    const {chatWindow, userManager} = app;
+    const chatWindow = app.chatWindow;
+    const userManager = app.userManager;
     return useObserver(()=>(
         <div>
             <h1>Hello {userManager.currentUser.displayName}. Welcome to chat!</h1>
             <UserList userManager={app.userManager}/>
             <pre>
-                {chatWindow.messages.map(msg => <MessageDisplay key={msg.timestamp.getTime()} msg={msg}/>)}
+                {chatWindow.messages.map(msg => <MessageDisplay msg={msg} key={msg.key} />)}
             </pre>
             <MessageEntry model={chatWindow.messageEntry}/>
             <TimeDisplay chatWindow={chatWindow} />
