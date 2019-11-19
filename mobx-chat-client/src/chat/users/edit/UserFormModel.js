@@ -1,4 +1,4 @@
-import * as types from 'mobx-state-tree';
+import {types} from "mobx-state-tree";
 
 export const UserFormModel = types
   .model('UserForm', {
@@ -10,12 +10,12 @@ export const UserFormModel = types
       self.userId = userId;
     },
     updateDisplayName(displayName) {
-      self.display = displayName;
+      self.displayName = displayName;
     }
   }))
   .views(self => ({
     get isAllowedToSubmit() {
-      return self.userId.length > 0 && self.updateDisplayName > 0;
+      return self.userId.length > 0 && self.displayName.length > 0;
     },
     get errorMessage() {
       if (self.userId < 1) {
